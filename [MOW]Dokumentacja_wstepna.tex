@@ -1,0 +1,64 @@
+% najpierw jest wstep, załączenie potrzebnych pakietów itp.
+\documentclass[a4paper, 10pt]{article}
+
+%polskie znaki
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[OT4]{fontenc}
+
+%wieksze mozliwosci zmiany wygladu strony, pakiet do wstawiania linków
+\usepackage{geometry}
+\usepackage{ulem}
+\RequirePackage{url}
+
+% ladne wciecia akapitow i odstepy, mozna wykasowac wedle uznania;)
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{3mm plus1mm minus1mm}
+
+%mniejsze marginesy
+\geometry{verbose,a4paper,tmargin=2.4cm,bmargin=2.4cm,lmargin=2.4cm,rmargin=2.4cm}
+\usepackage{graphicx} % wstawianie obrazkow
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{{\bf {Metody odkrywania wiedzy }} \\ {\large Dokumentacja wstępna projektu}}
+\date{\today}
+\author{Dominika Sawicka \\Filip Nabrdalik}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%
+\null  % Empty line
+\nointerlineskip  % No skip for prev line
+\vfill
+\let\snewpage \newpage
+\let\newpage \relax
+\maketitle %wstawienie tytulu, daty i autora
+\let \newpage \snewpage
+\vfill
+\break % page break
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+
+\newpage
+
+\section{Treść zadania}
+
+{\bf{Zadanie 17}}
+
+
+
+\section{Szczegółowa interpretacja tematu projektu}
+
+\section{Wykorzystywane algorytmy}
+
+\subsection{}
+
+\section{Plan eksperymentów}
+\subsection{Pytania, na które będzie poszukiwana odpowiedź}
+\subsection{Chatakterystyka wykorzystywanych zbiorów danych}
+\subsection{Parametry algorytmów, których wpływ na wyniki będzie badany}
+\subsection{Sposób oceny jakości modeli}
+\end{document}
