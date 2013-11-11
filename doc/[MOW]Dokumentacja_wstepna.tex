@@ -1,0 +1,107 @@
+% najpierw jest wstep, załączenie potrzebnych pakietów itp.
+\documentclass[a4paper, 10pt]{article}
+
+%polskie znaki
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[OT4]{fontenc}
+
+%wieksze mozliwosci zmiany wygladu strony, pakiet do wstawiania linków
+\usepackage{geometry}
+\usepackage{ulem}
+\RequirePackage{url}
+
+% ladne wciecia akapitow i odstepy, mozna wykasowac wedle uznania;)
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{3mm plus1mm minus1mm}
+
+%mniejsze marginesy
+\geometry{verbose,a4paper,tmargin=2.4cm,bmargin=2.4cm,lmargin=2.4cm,rmargin=2.4cm}
+\usepackage{graphicx} % wstawianie obrazkow
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{{\bf {Metody odkrywania wiedzy }} \\ {\large Dokumentacja wstępna projektu}}
+\date{\today}
+\author{Dominika Sawicka \\Filip Nabrdalik}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\bibliographystyle{alpha}
+%%%%%%%
+\null  % Empty line
+\nointerlineskip  % No skip for prev line
+\vfill
+\let\snewpage \newpage
+\let\newpage \relax
+\maketitle %wstawienie tytulu, daty i autora
+\let \newpage \snewpage
+\vfill
+\break % page break
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+
+\newpage
+
+
+% Przydatne linki:
+% 	http://www.ke.tu-darmstadt.de/lehre/archiv/ss12/web-mining/wm-tm.pdf
+%	http://www.dis.uniroma1.it/~leon/didattica/webir/IR11.pdf
+%	http://cran.r-project.org/web/packages/tm/tm.pdf
+%	https://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Classification
+%	http://www.statsoft.com.pl/textbook/stathome_stat.html?http%3A%2F%2Fwww.statsoft.com.pl%2Ftextbook%2Fstnaiveb.html
+
+
+
+
+\section{Treść zadania}
+
+{\bf{Zadanie 17}}
+
+Proste algorytmy klasyfikacji tekstu (TF-IDF, naiwny klasyfikator Bayesowski, kNN). Porównania ze standardowymi algorytmami klasyfikacji dostępnymi w R.
+
+
+
+\section{Szczegółowa interpretacja tematu projektu}
+
+Celem projektu jest implementacja w języku R oraz eksperymentalna ocena efektywności trzech algorytmów klasyfikacji tekstu:
+\begin{itemize}
+\item TF-IDF
+\item kNN
+\item Naiwny klasyfikator Bayesowski
+\end{itemize}
+Eksperymenty projektowe będą obejmowały porównanie autorskich wersji algorytmów z ich implementacjami dostępnymi w pakiecie R, a także
+zaawansowanymi algorytmami klasyfikacji tekstu. Do badań zostaną użyte zbiory danych tekstowych z repozytorium UCI \cite{website:uci}.
+
+
+
+\section{Wykorzystywane algorytmy}
+%rozmumiem, że opisywać dokładnie mamy tylko te, które implementujemy 
+
+\subsection{TF-IDF}
+
+\subsection{kNN}
+
+\subsection{Naiwny klasyfikator Bayesowski}
+
+\subsection{Algorytmy z pakietu R}
+
+%tutaj troszke o algorytmach dostepnych w R (te z ktorymi bedziemy porownywac)
+%dobry link https://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Classification
+%trzeba bedzie porównac te nasze z zaimplementowanymi w R + z jakims bardziej zaawansowanym dostepnym w R np. SVM
+
+\section{Plan eksperymentów}
+\subsection{Pytania, na które będzie poszukiwana odpowiedź}
+\subsection{Charakterystyka wykorzystywanych zbiorów danych}
+\subsection{Parametry algorytmów, których wpływ na wyniki będzie badany}
+\subsection{Sposób oceny jakości modeli}
+
+%BIBLIOGRAFIA
+\nocite{*}
+\bibliography{bibliografia}
+
+
+\end{document}
+
+
