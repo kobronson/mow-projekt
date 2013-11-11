@@ -19,6 +19,7 @@
 \geometry{verbose,a4paper,tmargin=2.4cm,bmargin=2.4cm,lmargin=2.4cm,rmargin=2.4cm}
 \usepackage{graphicx} % wstawianie obrazkow
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{{\bf {Metody odkrywania wiedzy }} \\ {\large Dokumentacja wstępna projektu}}
@@ -67,7 +68,7 @@ Proste algorytmy klasyfikacji tekstu (TF-IDF, naiwny klasyfikator Bayesowski, kN
 
 Celem projektu jest implementacja w języku R oraz eksperymentalna ocena efektywności trzech algorytmów klasyfikacji tekstu:
 \begin{itemize}
-\item TF-IDF
+\item TF-IDF 
 \item kNN
 \item Naiwny klasyfikator Bayesowski
 \end{itemize}
@@ -80,6 +81,31 @@ zaawansowanymi algorytmami klasyfikacji tekstu. Do badań zostaną użyte zbiory
 %rozmumiem, że opisywać dokładnie mamy tylko te, które implementujemy 
 
 \subsection{TF-IDF}
+
+TF-IDF (ang. TF – term frequency, IDF – inverse document frequency) informuje o częstosci wystąpienia termów uwzględniajac 
+wyważenie znaczenia lokalnego termu oraz jego znaczeniu w kolekcji dokumentów. W algorytmie TF-IDF kazdy dokument reprezentowany
+jest przez wektor zawierajacy wagi słow wystepujących w dokumencie. Wartość TF-IDF (1):
+
+
+\begin{equation}
+\mathrm{(tf\mbox{-}idf)_{i,j}} = \mathrm{tf_{i,j}} \times  \mathrm{idf_{i}}
+\end{equation}
+
+"Term frequency" (2), gdzie $n_{i,j}$ to liczbą wystąpień termu ($t_{i}$) w dokumencie $d_{j}$, a mianownik jest sumą liczby wystąpień wszystkich termów w dokumencie $d_{j}$:
+ 
+\begin{equation}
+\mathrm{tf_{i,j}} = \frac{n_{i,j}}{\sum_k n_{k,j}}
+\end{equation}
+
+"Inverse document frequency" (3), gdzie $|D|$ to liczba dokumentów, a $|\{d : t_{i} \in d\}|$ reprezentuje zbiór dokumentów zawierających
+jedno wystąpienie danego termu:
+
+\begin{equation}
+\mathrm{idf_{i}} =  \log \frac{|D|}{|\{d: t_{i} \in d\}|}
+\end{equation}
+
+Algorytm stosowany jest w systemach antyplagiatowych do oceny podobieństwa dokumentów, w wyszukiwarkach internetowych oraz systemach
+antyspamowych, gdzie potrzebna jest klasywikacja tekstu.
 
 \subsection{kNN}
 
@@ -94,6 +120,13 @@ zaawansowanymi algorytmami klasyfikacji tekstu. Do badań zostaną użyte zbiory
 \section{Plan eksperymentów}
 \subsection{Pytania, na które będzie poszukiwana odpowiedź}
 \subsection{Charakterystyka wykorzystywanych zbiorów danych}
+	
+	%Proponuje takie zbiory danych, ale to jeszcze do zastanowienia:
+	%http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection
+	%http://archive.ics.uci.edu/ml/datasets/DBWorld+e-mails
+	%http://archive.ics.uci.edu/ml/datasets/Legal+Case+Reports
+
+
 \subsection{Parametry algorytmów, których wpływ na wyniki będzie badany}
 \subsection{Sposób oceny jakości modeli}
 
