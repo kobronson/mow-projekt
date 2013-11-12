@@ -82,9 +82,9 @@ zaawansowanymi algorytmami klasyfikacji tekstu. Do badań zostaną użyte zbiory
 
 \subsection{TF-IDF}
 
-TF-IDF (ang. TF – term frequency, IDF – inverse document frequency) informuje o częstosci wystąpienia termów uwzględniajac 
-wyważenie znaczenia lokalnego termu oraz jego znaczeniu w kolekcji dokumentów. W algorytmie TF-IDF kazdy dokument reprezentowany
-jest przez wektor zawierajacy wagi słow wystepujących w dokumencie. Wartość TF-IDF (1):
+TF-IDF (ang. TF – term frequency, IDF – inverse document frequency) informuje o częstości wystąpienia termów uwzględniając 
+wyważenie znaczenia lokalnego termu oraz jego znaczeniu w kolekcji dokumentów. W algorytmie TF-IDF każdy dokument reprezentowany
+jest przez wektor zawierający wagi słów występujących w dokumencie. Wartość TF-IDF (1):
 
 
 \begin{equation}
@@ -104,12 +104,34 @@ jedno wystąpienie danego termu:
 \mathrm{idf_{i}} =  \log \frac{|D|}{|\{d: t_{i} \in d\}|}
 \end{equation}
 
-Algorytm stosowany jest w systemach antyplagiatowych do oceny podobieństwa dokumentów, w wyszukiwarkach internetowych oraz systemach
-antyspamowych, gdzie potrzebna jest klasywikacja tekstu.
+Algorytm stosowany jest w systemach anty plagiatowych do oceny podobieństwa dokumentów, w wyszukiwarkach internetowych oraz systemach
+antyspamowych, gdzie potrzebna jest klasyfikacja tekstu.
 
 \subsection{kNN}
 
+Algorytm kNN (ang. k-nearest neighbors algorithm), czyli algorytm
+
 \subsection{Naiwny klasyfikator Bayesowski}
+
+Naiwny klasyfikator bayesowski (1) jest to prosty klasyfikator probabilistyczny, którego w trybie "uczenia z nadzorem" można skutecznie użyć do 
+klasyfikacji dokumentów.
+
+\begin{equation}
+p(C \vert F_1,\dots,F_n) = \frac{1}{Z}  p(C) \prod_{i=1}^n p(F_i \vert C)
+\end{equation}
+
+Powyższego wzoru (4), wynikającego z tw. Bayesa, można użyć do zaklasyfikowania dokumentu do danego zbioru lub klasy jeśli spełniony jest warunek (6).
+\begin{equation}
+\ln{p(S\vert D)\over p(\neg S\vert D)}=\ln{p(S)\over p(\neg S)}+\sum_i \ln{p(w_i\vert S)\over p(w_i\vert\neg S))}
+\end{equation}
+\begin{equation}
+\ln{p(S\vert D)\over p(\neg S\vert D)} > 0
+\end{equation}
+
+Gdzie: $S$ - klasa dokumentu, $D$ - dokumenty, $w_i$ - pojedynczy term lub słowo.
+
+
+
 
 \subsection{Algorytmy z pakietu R}
 
