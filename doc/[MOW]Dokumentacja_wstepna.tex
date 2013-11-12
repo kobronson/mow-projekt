@@ -75,7 +75,15 @@ Celem projektu jest implementacja w języku R oraz eksperymentalna ocena efektyw
 Eksperymenty projektowe będą obejmowały porównanie autorskich wersji algorytmów z ich implementacjami dostępnymi w pakiecie R, a także
 zaawansowanymi algorytmami klasyfikacji tekstu. Do badań zostaną użyte zbiory danych tekstowych z repozytorium UCI \cite{website:uci}.
 
+\subsection{Wstęp}
+% https://www.usenix.org/legacy/event/sec02/full_papers/liao/liao_html/node4.html
 
+Klasyfikacją tekstu nazywamy proces przyporządkowania tekstów do określonych kategorii w oparciu o ich zawartość. 
+
+Pierwszym zadaniem w klasyfikacji tekstu jest przekształcenie dokumentów tekstowych, będących zwykle ciągami znaków, do postaci odpowiedniej do zastosowania algorytmów uczenia i klasyfikacji.
+Najczęściej stosowana jest reprezentacja tekstu jako modelu przestrzeni wektorowej. W tym modelu każdy dokument reprezentowany jest jako wektor słów. Zbiór tekstów przechowywany jest w macierzy ${A}$, w której kolumnach umieszczone są poszczególne słowa a wierszach przygotowywane do klasyfikacji teksty. Każdy element macierzy odpowiada wystąpieniu słowa w tekście, np. ${A = (a_{ij})}$, gdzie $(a_{ij})$ jest wagą słowa $i$ w dokumencie $j$. 
+
+Istnieje kilka sposobów określania wagi $i$. W dalszej części dokumentacji przedstawiono wybrane z nich.
 
 \section{Wykorzystywane algorytmy}
 %rozmumiem, że opisywać dokładnie mamy tylko te, które implementujemy 
