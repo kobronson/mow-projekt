@@ -117,7 +117,24 @@ antyspamowych, gdzie potrzebna jest klasyfikacja tekstu.
 
 \subsection{kNN}
 
-Algorytm kNN (ang. k-nearest neighbors algorithm), czyli algorytm
+Algorytm kNN (ang. k-nearest neighbors algorithm) pozwala sklasyfikować nieznany dokument $X$  poprzez uszeregowanie sąsiadów dokumentu spośród wektorów treningowych i wykorzystanie przynależności do klas $k$ najbardziej podobnych sąsiadów do przewidzenia klasy nieznanego dokumentu. Klasom sąsiadów przypisuje się wagi w zależności od podobieństwa każdego sąsiada do $X$ mierzonego odległością euklidesową lub wartością cosinusa kąta pomiędzy opisującymi je wektorami ważonych atrybutów. Podobieństwo mierzone wartością cosinusa definiuje następujący wzór:
+
+\begin{equation}
+\mathrm{sim(X, D_{j}) = \frac{
+\sum_{ t_{i} \in (x\cap D_{j})
+  }x_{i} \times d_{ij}}{||X||_{2} \times ||D_{j}||_{2}}}
+\end{equation}
+
+gdzie:\\
+$X$ - testowany dokument reprezentowany w postaci wektora\\
+$D_{j}$ - $j$-ty dokument treningowy\\
+$t_{i}$ - słowo wspólne dla $X$ i $D_{j}$\\
+$x_{i}$ - waga słowa $t_{i}$ w $X$\\
+$d_{ij}$ - waga słowa $t_{i}$ w dokumencie $D_{j}$\\
+$||X||_{2} = \sqrt{{x_{1}}^{2} + {x_{2}}^{2} + {x_{3}}^{2} + ...}$ - norma X\\
+$||D_{j}||_{2}$ - norma $D_{j}$\\
+
+
 
 %http://www.mimuw.edu.pl/~krzadca/zadanie-kNN.html
 
@@ -157,6 +174,13 @@ Gdzie: $S$ - klasa dokumentu, $D$ - dokumenty, $w_i$ - pojedynczy term lub słow
 	%http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection
 	%http://archive.ics.uci.edu/ml/datasets/DBWorld+e-mails
 	%http://archive.ics.uci.edu/ml/datasets/Legal+Case+Reports
+
+\subsubsection{Obróbka danych przed klasyfikacją}
+
+\begin{itemize}
+\item{Stemming}
+\item{Redukcja cech}
+\end{itemize}
 
 
 \subsection{Parametry algorytmów, których wpływ na wyniki będzie badany}
