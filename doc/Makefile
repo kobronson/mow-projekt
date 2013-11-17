@@ -10,7 +10,7 @@ pdf: t.pdf
 ps: t.ps
 
 gs: t.ps
-	gv -scale -2 -geometry +0+0 MOW]Dokumentacja_wstepna.ps
+	gv -scale -2 -geometry +0+0 [MOW]Dokumentacja_wstepna.ps
 
 gs2: t.ps
 	psnup -2 t.ps > tt.ps
