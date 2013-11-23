@@ -174,15 +174,18 @@ nazwy pakietów wraz z krótkim opisem algorytmu, jesli nie został opisany w po
 
 Wiekszość powyższych algorytmów jest dostępnych w zbiorczym pakiecie {\it RTextTools}. Jest to wstępna lista algorytmów z pakietów R do testowania i może ona ulec zmianie w dalszych fazach projektu.
 
-
-
-
 %tutaj troszke o algorytmach dostepnych w R (te z ktorymi bedziemy porownywac)
 %dobry link https://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Classification
 %trzeba bedzie porównac te nasze z zaimplementowanymi w R + z jakims bardziej zaawansowanym dostepnym w R np. SVM
 
 \section{Plan eksperymentów}
 \subsection{Pytania, na które będzie poszukiwana odpowiedź}
+
+\begin{itemize}
+\item{Który z testowanych algorytmów klasyfikacji jest najlepszy w kontekście badanych parametrów?}
+\item{Jak rozmiar danych uczących wpływa na poprawę skuteczności modeli?}
+\item{Czy na podstawie przeprowadzonych testów możliwe jest wyłonienie bezwzględnie najlepszego algorytmu?}
+\end{itemize}
 
 \subsection{Charakterystyka wykorzystywanych zbiorów danych}
 
@@ -191,9 +194,9 @@ Do celów testowych zodstały wybrane następujace zbiory danych dostępne w rep
 
 \begin{itemize}
 \item{SMS Spam \url{http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection} \\ kolekacja ponad 5000 wiadomosci SMS w jezyku angielskim, z których ok. 1000 zawiera spam. Dane zebrane są w jednym pliku, każda wiadomość znajduje się oddzielnym wierzu i 
-jest poprzedzona informacja do jakiego typu należy. Dane nie zostały poddane obróbce.} 
+jest poprzedzona informacja do jakiego typu należy. Dane nie zostały poddane obróbce. Konieczne będzie przetworzenie danych przed ich klasyfikacją.} 
 \item{SpamBase (\url{http://archive.ics.uci.edu/ml/datasets/Spambase}) \\ zbiór przykładów wygenerowany z 4601 wiadomosci email z których ok. 40\% została zaklasyfikowana jako spam. Atrybuty zostały otrzymane z 48 najsczęściej wystapuących słów, 6 ze znaków specjalnych i interpunkcyjnych oraz 3 z ilości nieprzerwanych ciągów wielkich liter.  W Każdy wiersz zawiera następuące atrybuty: 54 całkowitoliczbowwych [1,100] procent występowania słowa lub znaku w danej wiadomości i 3 całkowitoliczbowe reprezentujące ilośc wielkich liter oraz średnia i maksymalna długość łańcuchów wielkich liter w danej wiadomości email. Ostatni atrybut w zbiorze danych wskazuje czy dana wiadomość jest spamem. Dane nie wymagaja dalszej obróbki. }
-\item{} 
+
 \end{itemize}
 
 
@@ -201,14 +204,6 @@ jest poprzedzona informacja do jakiego typu należy. Dane nie zostały poddane o
 	%http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection
 	%http://archive.ics.uci.edu/ml/datasets/DBWorld+e-mails
 	%http://archive.ics.uci.edu/ml/datasets/Legal+Case+Reports
-
-\subsubsection{Obróbka danych przed klasyfikacją}
-
-\begin{itemize}
-\item{Stemming}
-\item{Redukcja cech}
-\end{itemize}
-
 
 \subsection{Parametry algorytmów, których wpływ na wyniki będzie badany}
 
