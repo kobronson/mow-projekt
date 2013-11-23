@@ -207,11 +207,18 @@ jest poprzedzona informacja do jakiego typu należy. Dane nie zostały poddane o
 
 \subsection{Parametry algorytmów, których wpływ na wyniki będzie badany}
 
+\begin{itemize}
+\item{liczebność zbioru uczącego}
+\item{liczba $k$ sąsiadów w algorytmie kNN}
+\item{%jakieś parametry tych 2 dodatkowych algorytmów z R-a??
+}
+\end{itemize}
+
 %parametr k z kNN
 
 \subsection{Sposób oceny jakości modeli}
 
-Jakość modeli będzie oceniana na podstawie wartości \textit{recall} i \textit{precision}.
+Jakość modeli będzie oceniana na podstawie wartości \textit{recall} i \textit{precision} oraz czasu potrzebnego na przeprowadzenie klasyfikacji.
 
 \begin{equation}
 recall = \frac{TP}{TP + FN}
