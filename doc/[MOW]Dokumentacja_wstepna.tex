@@ -192,7 +192,7 @@ Do celów testowych zodstały wybrane następujace zbiory danych dostępne w rep
 \begin{itemize}
 \item{SMS Spam \url{http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection} \\ kolekacja ponad 5000 wiadomosci SMS w jezyku angielskim, z których ok. 1000 zawiera spam. Dane zebrane są w jednym pliku, każda wiadomość znajduje się oddzielnym wierzu i 
 jest poprzedzona informacja do jakiego typu należy. Dane nie zostały poddane obróbce.} 
-\item{SpamBase (\url{http://archive.ics.uci.edu/ml/datasets/Spambase}) \\ zbiór przykładów wygenerowany z 4601 wiadomosci email z których ok. 40% została zaklasyfikowana jako spam. Atrybuty zostały otrzymane z 48 najsczęściej wystapuących słów, 6 ze znaków specjalnych i interpunkcyjnych oraz 3 z ilości nieprzerwanych ciągów wielkich liter.  W Każdy wiersz zawiera następuące atrybuty: 54 całkowitoliczbowwych [1,100] procent występowania słowa lub znaku w danej wiadomości i 3 całkowitoliczbowe reprezentujące ilośc wielkich liter oraz średnia i maksymalna długość łańcuchów wielkich liter w danej wiadomości email. Ostatni atrybut w zbiorze danych wskazuje czy dana wiadomość jest spamem. Dane nie wymagaja dalszej obróbki. }
+\item{SpamBase (\url{http://archive.ics.uci.edu/ml/datasets/Spambase}) \\ zbiór przykładów wygenerowany z 4601 wiadomosci email z których ok. 40\% została zaklasyfikowana jako spam. Atrybuty zostały otrzymane z 48 najsczęściej wystapuących słów, 6 ze znaków specjalnych i interpunkcyjnych oraz 3 z ilości nieprzerwanych ciągów wielkich liter.  W Każdy wiersz zawiera następuące atrybuty: 54 całkowitoliczbowwych [1,100] procent występowania słowa lub znaku w danej wiadomości i 3 całkowitoliczbowe reprezentujące ilośc wielkich liter oraz średnia i maksymalna długość łańcuchów wielkich liter w danej wiadomości email. Ostatni atrybut w zbiorze danych wskazuje czy dana wiadomość jest spamem. Dane nie wymagaja dalszej obróbki. }
 \item{} 
 \end{itemize}
 
@@ -215,6 +215,23 @@ jest poprzedzona informacja do jakiego typu należy. Dane nie zostały poddane o
 %parametr k z kNN
 
 \subsection{Sposób oceny jakości modeli}
+
+Jakość modeli będzie oceniana na podstawie wartości \textit{recall} i \textit{precision}.
+
+\begin{equation}
+recall = \frac{TP}{TP + FN}
+\end{equation}
+
+\begin{equation}
+precision = \frac{TP}{FP + TP}
+\end{equation}
+
+gdzie:\\
+$TP$ (true positive) - wiadomości będące SPAMem, zaklasyfikowane jako SPAM\\
+$FP$ (false positive) - wiadomości będące SPAMem, nie zaklasyfikowane jako SPAM\\
+$FN$ (false negative) - wiadomości nie będące SPAMem, zaklasyfikowane jako SPAM\\
+
+Wartość \textit{recall} mówi o tym, ile obiektów z danej klasy rozpoznaje model, natomiast \textit{precision} jest miarą tego dokładności klasyfikacji w obrębie rozpoznanej klasy.
 
 %BIBLIOGRAFIA
 \nocite{*}
