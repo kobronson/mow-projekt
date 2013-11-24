@@ -60,7 +60,7 @@
 
 {\bf{Zadanie 17}}
 
-Proste algorytmy klasyfikacji tekstu (TF-IDF, naiwny klasyfikator Bayesowski, kNN). Porównania ze standardowymi algorytmami klasyfikacji dostępnymi w R.
+{\it Proste algorytmy klasyfikacji tekstu (TF-IDF, naiwny klasyfikator Bayesowski, kNN). Porównania ze standardowymi algorytmami klasyfikacji dostępnymi w R.}
 
 
 
@@ -163,16 +163,19 @@ Gdzie: $S$ - klasa dokumentu, $D$ - dokumenty, $w_i$ - pojedynczy term lub słow
 \subsection{Algorytmy z pakietu R}
 
 Do porównania autorskich implementacji algorytmów zostały wybrane następujące wersje z pakietów R. Poniżej 
-nazwy pakietów wraz z krótkim opisem algorytmu, jesli nie został opisany w poprzednich podrozdziałach.
+nazwy pakietów wraz z krótkim opisem algorytmu, jeśli nie został opisany w poprzednich podrozdziałach.
 
 \begin{itemize}
-\item{kNN [{\it RWeka}],} 
+\item{kNN [{\it RWeka}],}
+%http://stat.ethz.ch/R-manual/R-devel/library/class/html/knn.html 
 \item{Naiwny klasyfikator Bayesowski [{\it e1071}],}
-\item{SVM [{\it e1071}] (ang. Support Vector Machine), klasyfikator którego nauka ma na calu wyznaczenie hiperpłaszczyzny rozdzielającej z maksymalnym marginesem przykłady należące do dwóch klas. Algorytm wykorzystywany do klasyfikacji stron www, obrazów oraz protein,} 
+%http://www-users.cs.york.ac.uk/~jc/teaching/arin/R_practical/
+\item{SVM [{\it e1071}] (ang. Support Vector Machine), klasyfikator którego nauka ma na calu wyznaczenie hiperpłaszczyzny rozdzielającej z maksymalnym marginesem przykłady należące do dwóch klas. Algorytm wykorzystywany do klasyfikacji stron www, obrazów oraz protein,}
+%http://journal.r-project.org/archive/2013-1/collingwood-jurka-boydstun-etal.pdf 
 \item{Random forest [{\it RTextTools}], algorytm oparty o tworzenie lasów drzew decyzyjnych podczas nauki do klasyfikacji.} 
 \end{itemize}
 
-Wiekszość powyższych algorytmów jest dostępnych w zbiorczym pakiecie {\it RTextTools}. Jest to wstępna lista algorytmów z pakietów R do testowania i może ona ulec zmianie w dalszych fazach projektu.
+Większość powyższych algorytmów jest dostępnych w zbiorczym pakiecie {\it RTextTools}. Jest to wstępna lista algorytmów z pakietów R do testowania i może ona ulec zmianie w dalszych fazach projektu.
 
 %tutaj troszke o algorytmach dostepnych w R (te z ktorymi bedziemy porownywac)
 %dobry link https://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Classification
@@ -189,15 +192,15 @@ Wiekszość powyższych algorytmów jest dostępnych w zbiorczym pakiecie {\it R
 
 \subsection{Charakterystyka wykorzystywanych zbiorów danych}
 
-Do celów testowych zodstały wybrane następujace zbiory danych dostępne w repozystorium UCI.
+Do celów testowych zostały wybrane następujące zbiory danych dostępne w repozytorium UCI.
+\textbf{SMS Spam} \url{(http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection)} \\ kolekcja ponad 5000 Wiadomości SMS w języku angielskim, z których ok. 1000 zawiera spam. Dane zebrane są w jednym pliku, każda wiadomość znajduje się oddzielnym wierszu i 
+jest poprzedzona informacja do jakiego typu należy. Dane nie zostały poddane obróbce. Konieczne będzie przetworzenie danych przed ich klasyfikacją. 
+\textbf{SpamBase} (\url{http://archive.ics.uci.edu/ml/datasets/Spambase}) \\ zbiór przykładów wygenerowany z 4601 Wiadomości email z których ok. 40\% została zaklasyfikowana jako spam. Atrybuty zostały otrzymane z 48 najczęściej występujących słów, 
+6 ze znaków specjalnych i interpunkcyjnych oraz 3 z ilości nieprzerwanych ciągów wielkich liter.  Każdy wiersz zawiera następujące atrybuty: 54 całkowitoliczbowych [1,100] procent występowania słowa lub znaku w danej wiadomości 
+i 3 całkowitoliczbowe reprezentujące ilość wielkich liter oraz średnia i maksymalna długość łańcuchów wielkich liter w danej wiadomości email. Ostatni atrybut w zbiorze danych wskazuje czy dana wiadomość jest spamem. 
+Dane nie wymagają dalszej obróbki. 
 
 
-\begin{itemize}
-\item{SMS Spam \url{http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection} \\ kolekacja ponad 5000 wiadomosci SMS w jezyku angielskim, z których ok. 1000 zawiera spam. Dane zebrane są w jednym pliku, każda wiadomość znajduje się oddzielnym wierzu i 
-jest poprzedzona informacja do jakiego typu należy. Dane nie zostały poddane obróbce. Konieczne będzie przetworzenie danych przed ich klasyfikacją.} 
-\item{SpamBase (\url{http://archive.ics.uci.edu/ml/datasets/Spambase}) \\ zbiór przykładów wygenerowany z 4601 wiadomosci email z których ok. 40\% została zaklasyfikowana jako spam. Atrybuty zostały otrzymane z 48 najsczęściej wystapuących słów, 6 ze znaków specjalnych i interpunkcyjnych oraz 3 z ilości nieprzerwanych ciągów wielkich liter.  W Każdy wiersz zawiera następuące atrybuty: 54 całkowitoliczbowwych [1,100] procent występowania słowa lub znaku w danej wiadomości i 3 całkowitoliczbowe reprezentujące ilośc wielkich liter oraz średnia i maksymalna długość łańcuchów wielkich liter w danej wiadomości email. Ostatni atrybut w zbiorze danych wskazuje czy dana wiadomość jest spamem. Dane nie wymagaja dalszej obróbki. }
-
-\end{itemize}
 
 
 	%Proponuje takie zbiory danych, ale to jeszcze do zastanowienia:
@@ -207,14 +210,9 @@ jest poprzedzona informacja do jakiego typu należy. Dane nie zostały poddane o
 
 \subsection{Parametry algorytmów, których wpływ na wyniki będzie badany}
 
-\begin{itemize}
-\item{liczebność zbioru uczącego}
-\item{liczba $k$ sąsiadów w algorytmie kNN}
-\item{%jakieś parametry tych 2 dodatkowych algorytmów z R-a??
-}
-\end{itemize}
+Parametrem stwierdzonym na tym etapie prac jest $k$, czyli ilość  uwzględnianych najbliższych sąsiadów z algorytmu kNN. Na skuteczność działania algorytmów, może mieć tez wpływ
+liczebność zbioru uczącego, co zostanie uwzględnione podczas eksperymentów. Zidentyfikowanie dodatkowych parametrów, jeśli istnieją, nastąpi na dalszym etapie prac projektowcyh.
 
-%parametr k z kNN
 
 \subsection{Sposób oceny jakości modeli}
 
@@ -234,6 +232,7 @@ $FP$ (false positive) - wiadomości będące SPAMem, nie zaklasyfikowane jako SP
 $FN$ (false negative) - wiadomości nie będące SPAMem, zaklasyfikowane jako SPAM\\
 
 Wartość \textit{recall} mówi o tym, ile obiektów z danej klasy rozpoznaje model, natomiast \textit{precision} jest miarą tego dokładności klasyfikacji w obrębie rozpoznanej klasy.
+Dodatkowa wartość \textit{F-score} jest średnią ważoną z \textit{recall} oraz \textit{precision} i pozwoli na ustalenie rankingu skuteczności algorytmów.
 
 %BIBLIOGRAFIA
 \nocite{*}
