@@ -81,7 +81,7 @@ zaawansowanymi algorytmami klasyfikacji tekstu. Do badań zostaną użyte zbiory
 Klasyfikacją tekstu nazywamy proces przyporządkowania tekstów do określonych kategorii w oparciu o ich zawartość. 
 
 Pierwszym zadaniem w klasyfikacji tekstu jest przekształcenie dokumentów tekstowych, będących zwykle ciągami znaków, do postaci odpowiedniej do zastosowania algorytmów uczenia i klasyfikacji.
-Najczęściej stosowana jest reprezentacja tekstu jako modelu przestrzeni wektorowej. W tym modelu każdy dokument reprezentowany jest jako wektor słów. Zbiór tekstów przechowywany jest w macierzy ${A}$, w której kolumnach umieszczone są poszczególne słowa a wierszach przygotowywane do klasyfikacji teksty. Każdy element macierzy odpowiada wystąpieniu słowa w tekście, np. ${A = (a_{ij})}$, gdzie $(a_{ij})$ jest wagą słowa $i$ w dokumencie $j$. 
+Najczęściej stosowana jest reprezentacja tekstu jako modelu przestrzeni wektorowej. W tym modelu każdy dokument reprezentowany jest jako wektor słów. Zbiór tekstów przechowywany jest w macierzy ${A}$, w której kolumnach umieszczone są poszczególne słowa a wierszach przygotowywane do klasyfikacji teksty. Każdy element macierzy odpowiada wystąpieniu słowa w tekście, np. ${A = (a_{ij})}$, gdzie $(a_{ij})$ jest wagą słowa $i$ w~dokumencie $j$. 
 
 Istnieje kilka sposobów określania wagi $i$. W dalszej części dokumentacji przedstawiono wybrane z nich.
 
@@ -192,11 +192,11 @@ Większość powyższych algorytmów jest dostępnych w zbiorczym pakiecie {\it 
 
 \subsection{Charakterystyka wykorzystywanych zbiorów danych}
 
-Do celów testowych zostały wybrane następujące zbiory danych dostępne w repozytorium UCI.
+Do celów testowych zostały wybrane następujące zbiory danych dostępne w repozytorium UCI.\\
 \textbf{SMS Spam} \url{(http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection)} \\ kolekcja ponad 5000 Wiadomości SMS w języku angielskim, z których ok. 1000 zawiera spam. Dane zebrane są w jednym pliku, każda wiadomość znajduje się oddzielnym wierszu i 
-jest poprzedzona informacja do jakiego typu należy. Dane nie zostały poddane obróbce. Konieczne będzie przetworzenie danych przed ich klasyfikacją. 
+jest poprzedzona informacja do jakiego typu należy. Dane nie zostały poddane obróbce. Konieczne będzie przetworzenie danych przed ich klasyfikacją. \\
 \textbf{SpamBase} (\url{http://archive.ics.uci.edu/ml/datasets/Spambase}) \\ zbiór przykładów wygenerowany z 4601 Wiadomości email z których ok. 40\% została zaklasyfikowana jako spam. Atrybuty zostały otrzymane z 48 najczęściej występujących słów, 
-6 ze znaków specjalnych i interpunkcyjnych oraz 3 z ilości nieprzerwanych ciągów wielkich liter.  Każdy wiersz zawiera następujące atrybuty: 54 całkowitoliczbowych [1,100] procent występowania słowa lub znaku w danej wiadomości 
+6 ze znaków specjalnych i~interpunkcyjnych oraz 3 z ilości nieprzerwanych ciągów wielkich liter.  Każdy wiersz zawiera następujące atrybuty: 54 całkowitoliczbowych [1,100] procent występowania słowa lub znaku w danej wiadomości 
 i 3 całkowitoliczbowe reprezentujące ilość wielkich liter oraz średnia i maksymalna długość łańcuchów wielkich liter w danej wiadomości email. Ostatni atrybut w zbiorze danych wskazuje czy dana wiadomość jest spamem. 
 Dane nie wymagają dalszej obróbki. 
 
@@ -210,9 +210,8 @@ Dane nie wymagają dalszej obróbki.
 
 \subsection{Parametry algorytmów, których wpływ na wyniki będzie badany}
 
-Parametrem stwierdzonym na tym etapie prac jest $k$, czyli ilość  uwzględnianych najbliższych sąsiadów z algorytmu kNN. Na skuteczność działania algorytmów, może mieć tez wpływ
+Parametrem stwierdzonym na tym etapie prac jest $k$, czyli ilość  uwzględnianych najbliższych sąsiadów z~algorytmu kNN. Na skuteczność działania algorytmów może mieć tez wpływ
 liczebność zbioru uczącego, co zostanie uwzględnione podczas eksperymentów. Zidentyfikowanie dodatkowych parametrów, jeśli istnieją, nastąpi na dalszym etapie prac projektowcyh.
-
 
 \subsection{Sposób oceny jakości modeli}
 
