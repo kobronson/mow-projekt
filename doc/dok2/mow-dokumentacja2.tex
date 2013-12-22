@@ -1,0 +1,77 @@
+% najpierw jest wstep, załączenie potrzebnych pakietów itp.
+\documentclass[a4paper, 10pt]{article}
+
+%polskie znaki
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[OT4]{fontenc}
+
+%wieksze mozliwosci zmiany wygladu strony, pakiet do wstawiania linków
+\usepackage{geometry}
+\usepackage{ulem}
+\RequirePackage{url}
+
+% ladne wciecia akapitow i odstepy, mozna wykasowac wedle uznania;)
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{3mm plus1mm minus1mm}
+
+%mniejsze marginesy
+\geometry{verbose,a4paper,tmargin=2.4cm,bmargin=2.4cm,lmargin=2.4cm,rmargin=2.4cm}
+\usepackage{graphicx} % wstawianie obrazkow
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{{\bf {Metody odkrywania wiedzy }} \\ {\large Dokumentacja projektu}}
+\date{\today}
+\author{Dominika Sawicka \\Filip Nabrdalik}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\bibliographystyle{alpha}
+%%%%%%%
+\null  % Empty line
+\nointerlineskip  % No skip for prev line
+\vfill
+\let\snewpage \newpage
+\let\newpage \relax
+\maketitle %wstawienie tytulu, daty i autora
+\let \newpage \snewpage
+\vfill
+\break % page break
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+
+\newpage
+
+
+% Przydatne linki:
+% 	http://www.ke.tu-darmstadt.de/lehre/archiv/ss12/web-mining/wm-tm.pdf
+%	http://www.dis.uniroma1.it/~leon/didattica/webir/IR11.pdf
+%	http://cran.r-project.org/web/packages/tm/tm.pdf
+%	https://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Classification
+%	http://www.statsoft.com.pl/textbook/stathome_stat.html?http%3A%2F%2Fwww.statsoft.com.pl%2Ftextbook%2Fstnaiveb.html
+
+
+
+
+\section{Treść zadania}
+
+{\bf{Zadanie 17}}
+
+{\it Proste algorytmy klasyfikacji tekstu (TF-IDF, naiwny klasyfikator Bayesowski, kNN). Porównania ze standardowymi algorytmami klasyfikacji dostępnymi w R.}
+
+
+
+
+
+
+%BIBLIOGRAFIA
+\nocite{*}
+\bibliography{bibliografia}
+
+
+\end{document}
+
+
