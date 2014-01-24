@@ -1,3 +1,4 @@
+# W kolumnie class 1 oznacza SPAM, 0 nie-SPAM.
 spamnumericdata <- read.csv("SpamBase/spambase.csv", header= TRUE, sep = ",", row.names = NULL)
 spamliteraldata <- read.csv("SpamCollection/SMSSpamCollection.csv", header= TRUE, sep = "\t", row.names = NULL, quote = NULL)
 
@@ -14,6 +15,10 @@ sum(spamnumericdata$class==1)
 niters <- 5
 knn_k <- 2
 results <- c()
+true_positives <- c()
+true_negatives <- c()
+false_positives <- c()
+false_negatives <- c()
 for (i in 1:niters) {
   n <- nrow(spamnumericdata)
   spamnumericdata <- spamnumericdata[sample(nrow(spamnumericdata)),] # Losowa kolejność wierszy.
@@ -28,9 +33,26 @@ for (i in 1:niters) {
   ntest <- nrow(test)
   correct <- sum(result == test_class)
   correct_ratio <- correct / ntest
+  true_positive <- sum(result == test_class & result == 1)
+  true_negative <- sum(result == test_class & result == 0)
+  false_positive <- sum(result != test_class & result == 1)
+  false_negative <- sum(result != test_class & result == 0)
   results <- c(results, correct_ratio)
+  true_positives <- c(true_positives, true_positive)
+  true_negatives <- c(true_negatives, true_negative)
+  false_positives <- c(false_positives, false_positive)
+  false_negatives <- c(false_negatives, false_negative)
 }
-print(mean(results))
+TP <- sum(true_positives)
+TN <- sum(true_negatives)
+FP <- sum(false_positives)
+FN <- sum(false_negatives)
 
-library(knnn)
-install.packages(kknn)
+recall = TP/(TP + FN)
+precision = TP/(FP + TP)
+
+print(recall)
+print(precision)
+
+#library(knnn)
+#install.packages(kknn)
