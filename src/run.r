@@ -1,6 +1,10 @@
 source("knn.r")
 source("tfidf.r")
 
+spamnumericdata <- read.csv("../dane/SpamBase/spambase.csv", header= TRUE, sep = ",", row.names = NULL)
+spamliteraldata <- read.csv("../dane/SpamCollection/SMSSpamCollection.csv", header= TRUE, sep = "\t", row.names = NULL, quote = NULL)
+spamliteraldata$class <- ifelse(spamliteraldata$category == "spam", 1, 0)
+
 train <- spamnumericdata[train_data_indices, (1:ncol(spamnumericdata))] # Bez ostatniej kolumny, czyli decyzji.
 test <- spamnumericdata[-train_data_indices, (1:ncol(spamnumericdata))] # Pozostałe wiersze, też bez ostatniej kolumny.
 
