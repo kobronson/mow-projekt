@@ -7,4 +7,4 @@
 *.blg
 *.log
 *.toc
-
+.R*
