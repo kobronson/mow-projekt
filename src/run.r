@@ -45,7 +45,7 @@ run_experiment <- function(train_data_size, test_data_size, niters){
     else{
       data<- spamliteraldata
     }
-    
+    total_time <- c()
     for (i in 1:niters) {
       n <- nrow(data)
       data <- data[sample(n),] # Losowa kolejność wierszy.
@@ -56,8 +56,11 @@ run_experiment <- function(train_data_size, test_data_size, niters){
       train_class <- factor(data$class[train_data_indices])
       test_class <- factor(data$class[test_data_indices])
       
+      ptm <- proc.time()["elapsed"]
       result <- classifier(train, train_class, test)
-      correct <- sum(result == test_class)
+      total_time <- c(total_time, proc.time()["elapsed"] - ptm["elapsed"])
+      
+      correct <- sum(result == test_class)  
       correct_ratio <- correct / train_data_size
       true_positive <- sum(result == test_class & result == 1)
       true_negative <- sum(result == test_class & result == 0)
@@ -82,9 +85,9 @@ run_experiment <- function(train_data_size, test_data_size, niters){
         " on datatype=", classifiers_types[[c_id]],
         " --> correct_ratio=", correct_ratio,
         ", recall=", recall,
-        ", precision=", precision, "\n", sep="")
+        ", precision=", precision, ", run_time=", mean(total_time)*1000, "ms\n", sep="")
   }
 }
 
 # Przykład uruchomienia eksperymentu: 100 przykładów uczących, 20 przykładów testowych, 5 iteracji wykonywania klasyfikacji na losowych danych
-run_experiment(100, 20, 5)
+run_experiment(100, 40, 5)
