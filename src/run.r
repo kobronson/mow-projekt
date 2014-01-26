@@ -1,6 +1,9 @@
 source("knn.r")
 source("tfidf.r")
 source("naive_bayes.r")
+source("R_knn.r")
+source("R_random_forest.r")
+source("R_svm.r")
 
 run_experiment <- function(train_data_size, test_data_size, niters){
   spamnumericdata <- read.csv("../dane/SpamBase/spambase.csv", header= TRUE, sep = ",", row.names = NULL)
@@ -16,12 +19,12 @@ run_experiment <- function(train_data_size, test_data_size, niters){
   #test_data_size <- n - train_data_size
   
   # Lista testowanych klasyfikatorów
-  classifiers <- c(make_knn_classifier(3), make_knn_classifier(2), tf_idf_classify, naive_bayes_classify)
-  classifiers_names <- c("knn_3", "knn_2", "tfidf", "naive bayes")
-  classifiers_types <- c("numeric", "numeric", "literal", "literal")
+  classifiers <- c(make_knn_classifier(3), make_r_knn_classifier(3), r_random_forest_classify, tf_idf_classify, naive_bayes_classify, r_svm_classify)
+  classifiers_names <- c("knn_3", "rknn_3", "rrandom_forest", "tfidf", "naive bayes", "rsvm")
+  classifiers_types <- c("numeric", "numeric", "numeric", "literal", "literal", "numeric")
   
   # Przygotowanie danych treningowych i testowych.
-  cat("Test run: ", niters, "iterations. train_data_size=", train_data_size, " test_data_size=", test_data_size, sep="")
+  cat("Test run: ", niters, "iterations. train_data_size=", train_data_size, " test_data_size=", test_data_size, "\n", sep="")
   for (c_id in 1:length(classifiers)){
     classifier <- classifiers[[c_id]]
     results <- c()
@@ -34,7 +37,6 @@ run_experiment <- function(train_data_size, test_data_size, niters){
       data <- spamnumericdata
     }
     else{
-      print("literal")
       data<- spamliteraldata
     }
     
@@ -73,6 +75,6 @@ run_experiment <- function(train_data_size, test_data_size, niters){
         " on datatype=", classifiers_types[[c_id]],
         " --> correct_ratio=", correct_ratio,
         ", recall=", recall,
-        ", precision=", precision, sep="")
+        ", precision=", precision, "\n", sep="")
   }
 }
