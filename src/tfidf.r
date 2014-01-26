@@ -5,5 +5,5 @@
 
 tf_idf_classify <- function(train_data, train_class, test_data){
   # Miejsce na klasyfikator tf-idf. Na razie zwraca zawsze 0.
-  rep(0,nrow(test_data))
+  rep(0,length(test_data))
 }
