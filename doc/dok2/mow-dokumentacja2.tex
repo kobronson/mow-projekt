@@ -5,7 +5,7 @@
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[OT4]{fontenc}
-
+\usepackage{placeins}
 %wieksze mozliwosci zmiany wygladu strony, pakiet do wstawiania linków
 \usepackage{geometry}
 \usepackage{ulem}
@@ -89,6 +89,8 @@ jedno wystąpienie danego termu:
 \mathrm{idf_{i}} =  \log \frac{|D|}{|\{d: t_{i} \in d\}|}
 \end{equation}
 
+W autorskiej wersji algorytmu TF-IDF służy do przygotowania danych, natomiast do klasyfikacji jest używany kNN.
+
 
 
 {\bf{kNN}}
@@ -166,7 +168,8 @@ Jakość modeli jest oceniana przy pomocy dwóch parametrów $precision$ oraz $r
 parametrem uwzględnionym w wynikach badań jest czas wykonania poszczególnych klasyfikatorów. 
 W celu zwiększenia wiarygodności badań, każdy eksperyment powtarzany był 5 razy, a uzyskane wyniki prezentowane 
 są w uśrednionej postaci. W celu miarodajnego porównania klasyfikatorów wykonane zostały eksperymenty dla różnych wielkości 
-zbiorów danych trenujących i testowych.
+zbiorów danych trenujących i testowych. Testy są w pełni zautomatyzowane, aby rozpocząć procedurę testowa należy uruchomić skrypt 
+$run.r$.
 
 
 
@@ -187,10 +190,14 @@ Dane nie wymagają dalszej obróbki i zostały wykorzystane podczas badań 	algo
 	
 	
 	\subsection{Parametry algorytmów}
-W eksperymentach badawczych zostały uwzględnione 3 wersje algorytmu kNN w zależności od parametru k: $k=(3,6,12)$
+W eksperymentach badawczych zostały uwzględnione 3 wersje algorytmu kNN w zależności od parametru $k=(3,6,12)$.
 
 
 	\subsection{Sposób oceny jakości modeli}
+	
+	Do oceny modeli użyliśmy parametru F-score, który jest średnia harmoniczną parametrów $precision$ i $recall$.
+	
+	
 \begin{equation}
 recall = \frac{TP}{TP + FN}
 \end{equation}
@@ -199,14 +206,40 @@ recall = \frac{TP}{TP + FN}
 precision = \frac{TP}{FP + TP}
 \end{equation}
 
+\begin{equation}
+{F-score} = \frac{2*precision*recall}{precision + recall}
+\end{equation}
+
+
 gdzie:\\
 $TP$ (true positive) - wiadomości będące SPAMem, zaklasyfikowane jako SPAM\\
 $FP$ (false positive) - wiadomości będące SPAMem, nie zaklasyfikowane jako SPAM\\
 $FN$ (false negative) - wiadomości nie będące SPAMem, zaklasyfikowane jako SPAM\\
 
+	
+
+
+\subsection{Uwagi do eksperymentów}
 
 
 \section{Wyniki}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=165mm]{wykresy/czas500.eps}
+\caption{\it{Czas wykonania }}
+\label{overflow}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=165mm]{wykresy/score500.eps}
+\caption{\it{Czas wykonania }}
+\label{overflow}
+\end{figure}
+
+\FloatBarrier
+
 \section{Wnioski}
 
 
