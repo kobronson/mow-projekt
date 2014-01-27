@@ -27,7 +27,7 @@ run_experiment <- function(train_data_size, test_data_size, niters){
   # Lista testowanych klasyfikatorów
   classifiers <- c(make_knn_classifier(3), make_r_knn_classifier(3), r_random_forest_classify, tf_idf_classify, naive_bayes_classify, r_naive_bayes_classify, r_svm_classify)
   classifiers_names <- c("knn_3", "rknn_3", "rrandom_forest", "tfidf", "naive bayes", "r naive bayes","rsvm")
-  classifiers_types <- c("numeric", "numeric", "numeric", "literal", "literal", "numeric", "numeric")
+  classifiers_types <- c("numeric", "numeric", "numeric", "literal", "literal", "literal", "numeric")
   
   # Przygotowanie danych treningowych i testowych.
   cat("Test run: ", niters, " iterations. train_data_size=", train_data_size, " test_data_size=", test_data_size, "\n", sep="")
