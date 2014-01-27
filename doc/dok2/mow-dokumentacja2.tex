@@ -64,12 +64,147 @@
 
 
 \section{Algorytmy}
-	\subsection{Standardowe algorytmy klasyfikacji tekstu w R}
 	\subsection{Autorskie algorytmy}
+	{\bf{TF-IDF}}
+
+TF-IDF (ang. TF – term frequency, IDF – inverse document frequency) informuje o częstości wystąpienia termów uwzględniając 
+wyważenie znaczenia lokalnego termu oraz jego znaczeniu w kolekcji dokumentów. W algorytmie TF-IDF każdy dokument reprezentowany
+jest przez wektor zawierający wagi słów występujących w dokumencie. Wartość TF-IDF (1):
+
+
+\begin{equation}
+\mathrm{(tf\mbox{-}idf)_{i,j}} = \mathrm{tf_{i,j}} \times  \mathrm{idf_{i}}
+\end{equation}
+
+"Term frequency" (2), gdzie $n_{i,j}$ to liczbą wystąpień termu ($t_{i}$) w dokumencie $d_{j}$, a mianownik jest sumą liczby wystąpień wszystkich termów w dokumencie $d_{j}$:
+ 
+\begin{equation}
+\mathrm{tf_{i,j}} = \frac{n_{i,j}}{\sum_k n_{k,j}}
+\end{equation}
+
+"Inverse document frequency" (3), gdzie $|D|$ to liczba dokumentów, a $|\{d : t_{i} \in d\}|$ reprezentuje zbiór dokumentów zawierających
+jedno wystąpienie danego termu:
+
+\begin{equation}
+\mathrm{idf_{i}} =  \log \frac{|D|}{|\{d: t_{i} \in d\}|}
+\end{equation}
+
+
+
+{\bf{kNN}}
+
+Algorytm kNN (ang. k-nearest neighbors algorithm) pozwala sklasyfikować nieznany dokument $X$  poprzez uszeregowanie sąsiadów dokumentu spośród wektorów treningowych i 
+wykorzystanie przynależności do klas $k$ najbardziej podobnych sąsiadów do przewidzenia klasy nieznanego dokumentu. Klasom sąsiadów przypisuje się wagi w zależności od 
+podobieństwa każdego sąsiada do $X$ mierzonego odległością euklidesową lub wartością cosinusa kąta pomiędzy opisującymi je wektorami ważonych atrybutów. 
+Podobieństwo mierzone wartością cosinusa definiuje następujący wzór:
+
+\begin{equation}
+\mathrm{sim(X, D_{j}) = \frac{
+\sum_{ t_{i} \in (x\cap D_{j})
+  }x_{i} \times d_{ij}}{||X||_{2} \times ||D_{j}||_{2}}}
+\end{equation}
+
+gdzie:\\
+$X$ - testowany dokument reprezentowany w postaci wektora\\
+$D_{j}$ - $j$-ty dokument treningowy\\
+$t_{i}$ - słowo wspólne dla $X$ i $D_{j}$\\
+$x_{i}$ - waga słowa $t_{i}$ w $X$\\
+$d_{ij}$ - waga słowa $t_{i}$ w dokumencie $D_{j}$\\
+$||X||_{2} = \sqrt{{x_{1}}^{2} + {x_{2}}^{2} + {x_{3}}^{2} + ...}$ - norma X\\
+$||D_{j}||_{2}$ - norma $D_{j}$\\
+
+Podobieństwo w autorskiej wersji algorytmu knn określa się za pomocą odległości euklidesowej.
+
+
+%http://www.mimuw.edu.pl/~krzadca/zadanie-kNN.html
+
+{\bf{Naiwny klasyfikator bayesowski}}
+
+Naiwny klasyfikator bayesowski (1) jest to prosty klasyfikator probabilistyczny, którego w trybie "uczenia z nadzorem" można skutecznie użyć do 
+klasyfikacji dokumentów.
+
+\begin{equation}
+p(C \vert F_1,\dots,F_n) = \frac{1}{Z}  p(C) \prod_{i=1}^n p(F_i \vert C)
+\end{equation}
+
+Powyższego wzoru (4), wynikającego z tw. Bayesa, można użyć do zaklasyfikowania dokumentu do danego zbioru lub klasy jeśli spełniony jest warunek (6).
+\begin{equation}
+\ln{p(S\vert D)\over p(\neg S\vert D)}=\ln{p(S)\over p(\neg S)}+\sum_i \ln{p(w_i\vert S)\over p(w_i\vert\neg S))}
+\end{equation}
+\begin{equation}
+\ln{p(S\vert D)\over p(\neg S\vert D)} > 0
+\end{equation}
+
+Gdzie: $S$ - klasa dokumentu, $D$ - dokumenty, $w_i$ - pojedynczy term lub słowo.
+	
+
+	\subsection{Standardowe algorytmy klasyfikacji tekstu w R}
+	
+	{\bf{Naiwny klasyfikator bayesowski w R}}
+	
+	Do badań została wykorzystana implementacja algorytmu z pakietu $e1071$.
+	
+	{\bf{kNN w R}}
+	
+	Do badań została wykorzystana implementacja algorytmu z pakietu $class$.
+	
+	{\bf{SVM w R}}
+	
+	Klasyfikator, którego nauka ma na celu wyznaczenie hiperpłaszczyzny rozdzielającej z maksymalnym marginesem przykłady należące do dwóch klas.
+	Do badań została wykorzystana implementacja algorytmu z pakietu $e1071$.
+	
+	{\bf{Random Forest w R}}
+	
+	Algorytm oparty o tworzenie lasów drzew decyzyjnych podczas nauki do klasyfikacji. Do badań została wykorzystana implementacja algorytmu z pakietu $randomForest$.
+	
+	
+
 \section{Eksperymenty badawcze}
+
+
+Jakość modeli jest oceniana przy pomocy dwóch parametrów $precision$ oraz $recall$. Dodatkowym 
+parametrem uwzględnionym w wynikach badań jest czas wykonania poszczególnych klasyfikatorów. 
+W celu zwiększenia wiarygodności badań, każdy eksperyment powtarzany był 5 razy, a uzyskane wyniki prezentowane 
+są w uśrednionej postaci. W celu miarodajnego porównania klasyfikatorów wykonane zostały eksperymenty dla różnych wielkości 
+zbiorów danych trenujących i testowych.
+
+
+
+
+
+
 	\subsection{Charakterystyka zbiorów danych}
+	
+Do celów testowych wykorzystane zostały następujace zbiory danych z repozytorium UCI.\\
+
+\textbf{SMS Spam} \url{(http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection)} \\ kolekcja ponad 5000 Wiadomości SMS w języku angielskim, z których ok. 1000 zawiera spam. Dane zebrane są w jednym pliku, każda wiadomość znajduje się oddzielnym wierszu i 
+jest poprzedzona informacja do jakiego typu należy. Dane te są wykorzystywane w eksperymentach algorytmu TF-IDF oraz w obu wersjach naiwnego klasyfikatora bayesowskiego. \\
+
+\textbf{SpamBase} (\url{http://archive.ics.uci.edu/ml/datasets/Spambase}) \\ zbiór przykładów wygenerowany z 4601 Wiadomości email z których ok. 40\% została zaklasyfikowana jako spam. Atrybuty zostały otrzymane z 48 najczęściej występujących słów, 
+6 ze znaków specjalnych i~interpunkcyjnych oraz 3 z ilości nieprzerwanych ciągów wielkich liter.  Każdy wiersz zawiera następujące atrybuty: 54 całkowitoliczbowych $[1,100]$ procent występowania słowa lub znaku w danej wiadomości 
+i 3 całkowitoliczbowe reprezentujące ilość wielkich liter oraz średnia i maksymalna długość łańcuchów wielkich liter w danej wiadomości email. Ostatni atrybut w zbiorze danych wskazuje czy dana wiadomość jest spamem. 
+Dane nie wymagają dalszej obróbki i zostały wykorzystane podczas badań 	algorytmów kNN, SVM, random forest oraz autorskiej wersji kNN.
+	
+	
 	\subsection{Parametry algorytmów}
+W eksperymentach badawczych zostały uwzględnione 3 wersje algorytmu kNN w zależności od parametru k: $k=(3,6,12)$
+
+
 	\subsection{Sposób oceny jakości modeli}
+\begin{equation}
+recall = \frac{TP}{TP + FN}
+\end{equation}
+
+\begin{equation}
+precision = \frac{TP}{FP + TP}
+\end{equation}
+
+gdzie:\\
+$TP$ (true positive) - wiadomości będące SPAMem, zaklasyfikowane jako SPAM\\
+$FP$ (false positive) - wiadomości będące SPAMem, nie zaklasyfikowane jako SPAM\\
+$FN$ (false negative) - wiadomości nie będące SPAMem, zaklasyfikowane jako SPAM\\
+
+
 
 \section{Wyniki}
 \section{Wnioski}
