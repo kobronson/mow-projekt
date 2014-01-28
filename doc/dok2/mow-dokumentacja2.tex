@@ -144,7 +144,9 @@ Gdzie: $S$ - klasa dokumentu, $D$ - dokumenty, $w_i$ - pojedynczy term lub słow
 	
 	{\bf{Naiwny klasyfikator bayesowski w R}}
 	
-	Do badań została wykorzystana implementacja algorytmu z pakietu $e1071$.
+	Do badań została wykorzystana implementacja algorytmu z pakietu $e1071$. Niestety brak czasu uniemożliwił jego poprawną implementację. Jego kod został załączony 
+	do sprawozdania, lecz wyniki są pominięte na wykresach.
+	
 	
 	{\bf{kNN w R}}
 	
@@ -221,20 +223,55 @@ $FN$ (false negative) - wiadomości nie będące SPAMem, zaklasyfikowane jako SP
 
 \subsection{Uwagi do eksperymentów}
 
+Długi czas obliczeń dla TF-IDF umożliwił zrealizowanie tylko części eksperymentów z jego udziałem.
+W sprawozdaniu zostały opisane następujące eksperymenty.
+
+\begin{itemize}
+  \item Czas klasyfikacji dla 10 przykładów, dla liczności zbioru trenującego odpowiednio $(100,150,300,500)$
+  \item F-score dla 10 przykładów, dla liczności zbioru trenującego odpowiednio $(100,150,300,500)$
+  \item F-score dla liczności zbioru trenującego odpowiednio $L=(100,150,300,500,1000)$ i ilości przykładów do klasyfikacji $0.25*L_i$
+  \item F-score dla liczności zbioru trenującego odpowiednio $L=(100,150,300,500,1000)$ i ilości przykładów do klasyfikacji $0.5*L_i$. Bez TF-IDF.
+  \item F-score dla liczności zbioru trenującego odpowiednio $L=(50,75,150,250,500)$ i ilości przykładów do klasyfikacji $2*L_i$. Bez TF-IDF.
+\end{itemize}
+
+
+
+
 
 \section{Wyniki}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=165mm]{wykresy/czas500.eps}
-\caption{\it{Czas wykonania }}
+\caption{\it{Czasy zaklasyfikowania 10 przykładów, TF-IDF oraz naiwny klasyfikator bayesowski nie mieści się w skali}}
 \label{overflow}
 \end{figure}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=165mm]{wykresy/score500.eps}
-\caption{\it{Czas wykonania }}
+\caption{\it{F-score dla zaklasyfikowania 10 przykładów, $L=(100,150,300,500)$}}
+\label{overflow}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=165mm]{wykresy/score1000.eps}
+\caption{\it{F-score dla zaklasyfikowania $0.25*L_i$ przykładów, $L=(100,150,300,500,1000)$}}
+\label{overflow}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=165mm]{wykresy/score1000-05.eps}
+\caption{\it{F-score dla zaklasyfikowania $0.5*L_i$ przykładów, $L=(100,150,300,500,1000)$. Bez TF-IDF.}}
+\label{overflow}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=165mm]{wykresy/score500-2.eps}
+\caption{\it{F-score dla zaklasyfikowania $2*L_i$ przykładów, $L=(50,75,150,250,500)$. Bez TF-IDF.}}
 \label{overflow}
 \end{figure}
 
@@ -242,7 +279,14 @@ $FN$ (false negative) - wiadomości nie będące SPAMem, zaklasyfikowane jako SP
 
 \section{Wnioski}
 
+\subsection{Interpretacja wyników}
 
+\subsection{Odpowiedzi na pytania}
+\begin{itemize}
+\item{Który z testowanych algorytmów klasyfikacji jest najlepszy w kontekście badanych parametrów?}
+\item{Jak rozmiar danych uczących wpływa na poprawę skuteczności modeli?}
+\item{Czy na podstawie przeprowadzonych testów możliwe jest wyłonienie bezwzględnie najlepszego algorytmu?}
+\end{itemize}
 
 
 
