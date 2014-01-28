@@ -180,7 +180,7 @@ $run.r$.
 
 	\subsection{Charakterystyka zbiorów danych}
 	
-Do celów testowych wykorzystane zostały następujace zbiory danych z repozytorium UCI.\\
+Do celów testowych wykorzystane zostały następujące zbiory danych z repozytorium UCI.\\
 
 \textbf{SMS Spam} \url{(http://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection)} \\ kolekcja ponad 5000 Wiadomości SMS w języku angielskim, z których ok. 1000 zawiera spam. Dane zebrane są w jednym pliku, każda wiadomość znajduje się oddzielnym wierszu i 
 jest poprzedzona informacja do jakiego typu należy. Dane te są wykorzystywane w eksperymentach algorytmu TF-IDF oraz w obu wersjach naiwnego klasyfikatora bayesowskiego. \\
@@ -277,15 +277,39 @@ W sprawozdaniu zostały opisane następujące eksperymenty.
 
 \FloatBarrier
 
+\newpage
 \section{Wnioski}
 
-\subsection{Interpretacja wyników}
+\subsection{Komentarz do wyników}
+
+Testy z pomiarem czasu wykazały duże różnicę pomiędzy autorskimi algorytmami, a tymi dostępnymi w R. Nasze implementacje algorytmów charakteryzują się dużo dłuższym
+czasem wykonania wraz ze wzrostem liczności zbioru trenującego, co wpłynęło na plan i przebieg eksperymentów. Maksymalna liczność zbioru trenującego została ograniczona do 1000 przykładów.
+
+W rankingu F-score zdecydowanie prowadzi autorska implementacja naiwnego klasyfikatora bayesowskiego. Niestety dla odpowiednio dużych zbiorów danych, ok. 1000 przykładów, implementacja algorytmu
+zawodzi i nie uzyskiwany jest poprawny rezultat. Wszystkie wersje algorytmu kNN, pomimo że wolniejsze od dostępnych w pakiecie R, okazały się być tylko niewiele od nich gorsze po względem parametru F-score. Najskuteczniejszy jest autorski
+algorytm kNN dla parametru $k=3$. Autorski TF-IDF uzyskał dobry rezultat, jednak jego czas wykonania uniemożliwił przeprowadzenie części testów.
+
+SVM dostępny w pakietach R charakteryzuje się znacznym wzrostem F-score wraz z ilością przykładów trenujących. Natomiast w skuteczności pierwszy jest algorytm RandomForest, który pomimo wolnego działania osiągnął
+rezultat zbliżony do autorskiego  naiwnego klasyfikatora bayesowskiego. 
+
 
 \subsection{Odpowiedzi na pytania}
 \begin{itemize}
-\item{Który z testowanych algorytmów klasyfikacji jest najlepszy w kontekście badanych parametrów?}
-\item{Jak rozmiar danych uczących wpływa na poprawę skuteczności modeli?}
-\item{Czy na podstawie przeprowadzonych testów możliwe jest wyłonienie bezwzględnie najlepszego algorytmu?}
+\item{Który z testowanych algorytmów klasyfikacji jest najlepszy w kontekście badanych parametrów? \\
+
+Najlepsza wydaje się być implementacja naiwnego klasyfikatora bayesowskiego, pomimo wolnego działania. Zarówno dla dużej jak i małej ilości danych trenujących klasyfikator ten uzyskał najlepszy rezultat. 
+Z pakietu R najlepiej sprawdzał się Random Forest. kNN uzyskał najlepszy wynik dla parametru $k=3$.}
+\item{Jak rozmiar danych uczących wpływa na poprawę skuteczności modeli?\\
+
+Największy wzrost skuteczności obserwowany był do 150 lub 500 przykładów trenujących. Dla większych ilości nie zaobserwowano znaczących zmian. Wyjątkiem jest tu SVM, gdzie wzrost można obserwować do 250 lub 500 przykładów
+
+}
+\item{Czy na podstawie przeprowadzonych testów możliwe jest wyłonienie bezwzględnie najlepszego algorytmu? \\
+
+Na podstawie testów nie można wyłonić bezwzględnie najlepszego algorytmu. Pod uwagę musi być brany rodzaj analizowanych danych oraz obszar zastosowania danego klasyfikatora.
+Podczas testów okazało się, że cześć jest niemożliwa do zrealizowania z powodu czasu potrzebnego na eksperymenty. TF-IDF w autorskiej implementacji i bayes nie nadają się to zastosowania w obszarach, gdzie pożądana jest szybkość obliczeń, lecz
+osiągają bardzo dobre wyniki. Odpowiedni zbiór trenujący jak w przypadku SVM i obróbka danych przed analizą ma także znaczący wpływ na ocenę algorytmu.
+}
 \end{itemize}
 
 
